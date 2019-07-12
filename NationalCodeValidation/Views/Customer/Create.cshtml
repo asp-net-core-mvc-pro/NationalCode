@@ -1,0 +1,28 @@
+﻿@model NationalCodeValidation.Models.CustomerModel
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+
+@if (ViewBag.Errors != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            @foreach (var error in (IEnumerable<ModelError>)ViewBag.Errors)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @error.ErrorMessage
+                </div>
+            }
+        </div>
+    </div>
+}
+
+
+<form method="post">
+    <label>FirstName:</label>
+    <input type="text" asp-for="FirstName" />
+    <label>LastName:</label>
+    <input type="text" asp-for="LastName" />
+    <label>NationalCode:</label>
+    <input type="text" asp-for="NationalCode" />
+
+    <input type="submit" value="Submit" />
+</form>
